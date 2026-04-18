@@ -1,0 +1,168 @@
+{
+  "warfighter_readiness": {
+    "capabilities": [
+      {
+        "capability_name": "Operational Support Capability",
+        "sub_capabilities": [
+          {
+            "name": "Mission Support Services",
+            "items": [
+              "Battlefield support systems",
+              "Operational planning tools",
+              "Mission data integration"
+            ]
+          },
+          {
+            "name": "Field Deployment Support",
+            "items": [
+              "Rapid deployment capability",
+              "On-site technical support",
+              "Forward operating base logistics"
+            ]
+          },
+          {
+            "name": "Operational Reliability",
+            "items": [
+              "Mean time between failures (MTBF)",
+              "Operational uptime",
+              "Mission-critical system reliability"
+            ]
+          }
+        ]
+      },
+      {
+        "capability_name": "Equipment Sustainment Capability",
+        "sub_capabilities": [
+          {
+            "name": "Maintenance Support",
+            "items": [
+              "Preventive maintenance programs",
+              "Field repair capability",
+              "Maintenance training for military personnel"
+            ]
+          },
+          {
+            "name": "Spare Parts Availability",
+            "items": [
+              "Rapid spare parts supply",
+              "Inventory readiness",
+              "Component lifecycle management"
+            ]
+          },
+          {
+            "name": "Lifecycle Management",
+            "items": [
+              "Equipment lifecycle tracking",
+              "Upgrade and modernization support",
+              "End-of-life management"
+            ]
+          }
+        ]
+      },
+      {
+        "capability_name": "Interoperability Capability",
+        "sub_capabilities": [
+          {
+            "name": "System Integration",
+            "items": [
+              "Compatibility with existing military platforms",
+              "API and communication protocol integration"
+            ]
+          },
+          {
+            "name": "Joint Operations Compatibility",
+            "items": [
+              "NATO interoperability",
+              "Multi-force integration capability"
+            ]
+          },
+          {
+            "name": "Communication Systems Integration",
+            "items": [
+              "Secure communications support",
+              "Tactical network integration"
+            ]
+          }
+        ]
+      },
+      {
+        "capability_name": "Training and Readiness Support Capability",
+        "sub_capabilities": [
+          {
+            "name": "Operator Training Programs",
+            "items": [
+              "Equipment operation training",
+              "Simulation-based training"
+            ]
+          },
+          {
+            "name": "Technical Training",
+            "items": [
+              "Maintenance training",
+              "System troubleshooting training"
+            ]
+          },
+          {
+            "name": "Training Infrastructure",
+            "items": [
+              "Training simulators",
+              "Digital training platforms"
+            ]
+          }
+        ]
+      },
+      {
+        "capability_name": "Logistics Readiness Capability",
+        "sub_capabilities": [
+          {
+            "name": "Deployment Logistics",
+            "items": [
+              "Rapid equipment mobilization",
+              "Strategic transport capability"
+            ]
+          },
+          {
+            "name": "Supply Chain Resilience",
+            "items": [
+              "Redundant suppliers",
+              "Supply chain risk management"
+            ]
+          },
+          {
+            "name": "Operational Resupply",
+            "items": [
+              "Fuel and parts resupply capability",
+              "Field supply management"
+            ]
+          }
+        ]
+      },
+      {
+        "capability_name": "Cybersecurity and Information Assurance Capability",
+        "sub_capabilities": [
+          {
+            "name": "Secure System Architecture",
+            "items": [
+              "Secure communication protocols",
+              "Encryption implementation"
+            ]
+          },
+          {
+            "name": "Cyber Threat Detection",
+            "items": [
+              "Intrusion detection systems",
+              "Threat monitoring"
+            ]
+          },
+          {
+            "name": "Compliance and Standards",
+            "items": [
+              "NIST framework compliance",
+              "CMMC readiness"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

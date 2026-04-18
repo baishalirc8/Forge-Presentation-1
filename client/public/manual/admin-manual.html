@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CENCORE Admin Portal - User Manual</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface-2: #1a1a25;
+      --border: #2a2a35;
+      --text: #e4e4e7;
+      --text-muted: #8b8b9e;
+      --primary: #8a8a3c;
+      --primary-light: #a5a54a;
+      --accent: #c5c54a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--primary);
+      color: #000;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0 3rem;
+    }
+    .toc h2 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary-light);
+      margin-bottom: 1rem;
+    }
+    .toc ol {
+      padding-left: 1.5rem;
+    }
+    .toc li {
+      margin-bottom: 0.5rem;
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toc a:hover {
+      color: var(--accent);
+    }
+    .section {
+      margin-bottom: 4rem;
+      scroll-margin-top: 2rem;
+    }
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      background: var(--primary);
+      color: #000;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 8px;
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+    }
+    .section h2 {
+      display: flex;
+      align-items: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section p, .section li {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .section ul {
+      padding-left: 1.5rem;
+      margin-top: 0.75rem;
+    }
+    .section li {
+      margin-bottom: 0.4rem;
+    }
+    .screenshot {
+      margin: 1.5rem 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .screenshot img {
+      width: 100%;
+      display: block;
+    }
+    .screenshot .caption {
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: var(--surface-2);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-style: italic;
+    }
+    .tip {
+      background: rgba(138, 138, 60, 0.08);
+      border: 1px solid rgba(138, 138, 60, 0.25);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: var(--primary-light);
+    }
+    .tip::before {
+      content: "Tip: ";
+      font-weight: 700;
+    }
+    .footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    strong { color: var(--text); }
+    @media print {
+      body { background: #fff; color: #000; }
+      .header { background: #f5f5f5; }
+      .section p, .section li { color: #333; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-badge">Administrator Guide</div>
+    <h1>CENCORE Platform</h1>
+    <p>WRA 2026 Capability Assessment Dashboard &mdash; Admin Portal User Manual</p>
+  </div>
+
+  <div class="container">
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#login">Logging In</a></li>
+        <li><a href="#dashboard">Dashboard Overview</a></li>
+        <li><a href="#partners">Partner Management</a></li>
+        <li><a href="#partner-detail">Partner Detail View</a></li>
+        <li><a href="#assessment">Partner Assessment Review</a></li>
+        <li><a href="#activity">Activity Log</a></li>
+        <li><a href="#config">Configuration</a></li>
+        <li><a href="#chatbot">AI Admin Assistant</a></li>
+      </ol>
+    </div>
+
+    <div class="section" id="login">
+      <h2><span class="section-number">1</span> Logging In</h2>
+      <p>Navigate to the platform URL. You will see the login screen. Enter your admin credentials:</p>
+      <ul>
+        <li><strong>Username:</strong> Your assigned administrator username</li>
+        <li><strong>Password:</strong> Your secure admin password</li>
+      </ul>
+      <p>Click <strong>LOGIN</strong> to access the admin dashboard. The system will authenticate your credentials and redirect you to the main dashboard.</p>
+      <div class="tip">The platform uses session-based authentication. Your session will persist until you sign out.</div>
+    </div>
+
+    <div class="section" id="dashboard">
+      <h2><span class="section-number">2</span> Dashboard Overview</h2>
+      <p>The Dashboard is your command center. It provides a real-time overview of all partner activities and assessment metrics across the platform.</p>
+      <div class="screenshot">
+        <img src="screenshots/admin-dashboard.png" alt="Admin Dashboard" />
+        <div class="caption">Figure 1: Admin Dashboard showing key metrics, partner summary, and recent activity</div>
+      </div>
+      <p>Key dashboard elements include:</p>
+      <ul>
+        <li><strong>Summary Metrics:</strong> Total partners, capabilities submitted, assessments pending, and completed reviews</li>
+        <li><strong>Partner Status Cards:</strong> Quick-view tiles showing each partner's submission status and overall readiness</li>
+        <li><strong>Recent Activity Feed:</strong> Real-time log of partner actions (submissions, edits, document uploads)</li>
+      </ul>
+      <div class="tip">The sidebar on the left provides navigation to all major sections. The CENCORE branding and classification level (CUI // IL5) are displayed at all times.</div>
+    </div>
+
+    <div class="section" id="partners">
+      <h2><span class="section-number">3</span> Partner Management</h2>
+      <p>The <strong>Partners</strong> page lists all registered defense/government partners in the ecosystem. Each partner card shows company details and registration status.</p>
+      <div class="screenshot">
+        <img src="screenshots/admin-partners.png" alt="Partners List" />
+        <div class="caption">Figure 2: Partner listing with company details and capability count</div>
+      </div>
+      <ul>
+        <li><strong>Partner Cards:</strong> Display partner name, logo/image, description, and number of submitted capabilities</li>
+        <li><strong>Quick Actions:</strong> Click any partner card to drill into their detailed profile</li>
+        <li><strong>Search &amp; Filter:</strong> Locate specific partners by name or status</li>
+      </ul>
+    </div>
+
+    <div class="section" id="partner-detail">
+      <h2><span class="section-number">4</span> Partner Detail View</h2>
+      <p>Clicking on a partner opens the <strong>Partner Detail</strong> page. This view provides comprehensive information about a specific partner organization.</p>
+      <div class="screenshot">
+        <img src="screenshots/admin-partner-detail.png" alt="Partner Detail" />
+        <div class="caption">Figure 3: Partner detail view showing company profile, capabilities, and assessment status</div>
+      </div>
+      <ul>
+        <li><strong>Company Profile:</strong> Full organizational details including POC, address, CAGE/DUNS codes</li>
+        <li><strong>Capabilities List:</strong> All capabilities submitted by this partner with status indicators</li>
+        <li><strong>Assessment History:</strong> Historical record of reviews and feedback cycles</li>
+      </ul>
+    </div>
+
+    <div class="section" id="assessment">
+      <h2><span class="section-number">5</span> Partner Assessment Review</h2>
+      <p>The <strong>Partner Assessment</strong> page is the primary review workspace. Here you evaluate partner capability submissions across all 9 readiness verticals.</p>
+      <div class="screenshot">
+        <img src="screenshots/admin-partner-assessment.png" alt="Partner Assessment" />
+        <div class="caption">Figure 4: Assessment review interface showing capability selection and vertical evaluations</div>
+      </div>
+      <p>The assessment workflow includes:</p>
+      <ul>
+        <li><strong>Capability Selection:</strong> Choose a partner and their submitted capability to review</li>
+        <li><strong>9 Readiness Verticals:</strong> TRL, PRL, CRL, IRL, SCRL, TVRL, MRL, HRL, AIRL &mdash; each with maturity levels L1&ndash;L9</li>
+        <li><strong>Document Review:</strong> View uploaded artifacts and AI compliance scores for each vertical</li>
+        <li><strong>AI Compliance Scoring:</strong> Automated document analysis with policy-based scoring (0&ndash;100)</li>
+        <li><strong>Feedback:</strong> Provide section-level remarks, request additional evidence, or approve/reject</li>
+        <li><strong>Status Actions:</strong> Mark capabilities as <strong>Verified</strong>, <strong>Not Verified</strong>, or <strong>Feedback Sent</strong></li>
+      </ul>
+      <div class="tip">Use the "AI Score" button on individual document sections to trigger AI compliance analysis. The AI evaluates documents against DoD policy frameworks and returns a detailed score with rationale.</div>
+    </div>
+
+    <div class="section" id="activity">
+      <h2><span class="section-number">6</span> Activity Log</h2>
+      <p>The <strong>Activity Log</strong> records all significant events across the platform, providing a complete audit trail.</p>
+      <div class="screenshot">
+        <img src="screenshots/admin-activity-log.png" alt="Activity Log" />
+        <div class="caption">Figure 5: Activity log showing timestamped events and actions across the platform</div>
+      </div>
+      <ul>
+        <li><strong>Timestamped Events:</strong> Every partner action, admin review, and system event is logged</li>
+        <li><strong>Action Types:</strong> Submissions, status changes, document uploads, feedback responses</li>
+        <li><strong>User Attribution:</strong> Each event is tied to the user who performed it</li>
+        <li><strong>Filtering:</strong> Search by date range, action type, or partner</li>
+      </ul>
+    </div>
+
+    <div class="section" id="config">
+      <h2><span class="section-number">7</span> Configuration</h2>
+      <p>The <strong>Configuration</strong> page allows administrators to manage platform settings including vertical configurations and assessment policies.</p>
+      <div class="screenshot">
+        <img src="screenshots/admin-configuration.png" alt="Configuration" />
+        <div class="caption">Figure 6: Configuration panel with vertical settings and policy management</div>
+      </div>
+      <ul>
+        <li><strong>Vertical Management:</strong> Enable or disable specific readiness verticals (TRL, PRL, CRL, etc.)</li>
+        <li><strong>Policy Configuration:</strong> Manage the policy frameworks used for AI compliance scoring</li>
+        <li><strong>Artifact Definitions:</strong> Configure required artifacts and evidence for each maturity level</li>
+        <li><strong>System Settings:</strong> Manage global platform parameters</li>
+      </ul>
+    </div>
+
+    <div class="section" id="chatbot">
+      <h2><span class="section-number">8</span> AI Admin Assistant</h2>
+      <p>The <strong>AI Admin Assistant</strong> is available via the floating chat button (bottom-right corner) on every page. It provides on-demand help and guidance.</p>
+      <ul>
+        <li><strong>Dashboard Help:</strong> Ask about metrics, trends, and what the data means</li>
+        <li><strong>Assessment Guidance:</strong> Get help understanding partner submissions and review workflows</li>
+        <li><strong>Policy Explanations:</strong> Ask about the 9 readiness verticals, maturity levels, and compliance requirements</li>
+        <li><strong>Preset Questions:</strong> Quick-access questions like &quot;How does the partner assessment workflow work?&quot; and &quot;Explain the 9 readiness verticals&quot;</li>
+      </ul>
+      <div class="tip">The AI assistant is context-aware and can answer questions about specific verticals, policies, maturity levels, and assessment procedures.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>CENCORE Platform &mdash; WRA 2026 &mdash; Admin Portal User Manual</p>
+    <p>Classification: CUI // IL5 Environment</p>
+  </div>
+</body>
+</html>

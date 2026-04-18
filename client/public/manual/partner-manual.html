@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IWE Partner Portal - User Manual</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface-2: #1a1a25;
+      --border: #2a2a35;
+      --text: #e4e4e7;
+      --text-muted: #8b8b9e;
+      --primary: #8a8a3c;
+      --primary-light: #a5a54a;
+      --accent: #c5c54a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--primary);
+      color: #000;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0 3rem;
+    }
+    .toc h2 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary-light);
+      margin-bottom: 1rem;
+    }
+    .toc ol {
+      padding-left: 1.5rem;
+    }
+    .toc li {
+      margin-bottom: 0.5rem;
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toc a:hover {
+      color: var(--accent);
+    }
+    .section {
+      margin-bottom: 4rem;
+      scroll-margin-top: 2rem;
+    }
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      background: var(--primary);
+      color: #000;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 8px;
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+    }
+    .section h2 {
+      display: flex;
+      align-items: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--primary-light);
+    }
+    .section p, .section li {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .section ul, .section ol {
+      padding-left: 1.5rem;
+      margin-top: 0.75rem;
+    }
+    .section li {
+      margin-bottom: 0.4rem;
+    }
+    .screenshot {
+      margin: 1.5rem 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .screenshot img {
+      width: 100%;
+      display: block;
+    }
+    .screenshot .caption {
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: var(--surface-2);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-style: italic;
+    }
+    .tip {
+      background: rgba(138, 138, 60, 0.08);
+      border: 1px solid rgba(138, 138, 60, 0.25);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: var(--primary-light);
+    }
+    .tip::before {
+      content: "Tip: ";
+      font-weight: 700;
+    }
+    .warning {
+      background: rgba(200, 80, 60, 0.08);
+      border: 1px solid rgba(200, 80, 60, 0.25);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: #e8a090;
+    }
+    .warning::before {
+      content: "Important: ";
+      font-weight: 700;
+    }
+    .step-list {
+      counter-reset: step-counter;
+      list-style: none;
+      padding-left: 0;
+    }
+    .step-list li {
+      counter-increment: step-counter;
+      padding: 0.75rem 0 0.75rem 2.5rem;
+      position: relative;
+      border-left: 2px solid var(--border);
+      margin-left: 1rem;
+    }
+    .step-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: -1rem;
+      top: 0.75rem;
+      width: 1.75rem;
+      height: 1.75rem;
+      background: var(--primary);
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+    .vertical-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .vertical-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+    }
+    .vertical-card strong {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+    .vertical-card span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    strong { color: var(--text); }
+    @media (max-width: 700px) {
+      .vertical-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media print {
+      body { background: #fff; color: #000; }
+      .header { background: #f5f5f5; }
+      .section p, .section li { color: #333; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-badge">Partner Guide</div>
+    <h1>IWE Partner Portal</h1>
+    <p>Integrated Warfighter Ecosystem &mdash; Capability Submission &amp; Assessment Guide</p>
+  </div>
+
+  <div class="container">
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#login">Getting Started &amp; Logging In</a></li>
+        <li><a href="#home">Partner Home Dashboard</a></li>
+        <li><a href="#company">Company Profile (Business &amp; Finance)</a></li>
+        <li><a href="#capabilities">Capabilities Overview</a></li>
+        <li><a href="#wizard">Creating a New Capability</a></li>
+        <li><a href="#verticals">Understanding the 9 Readiness Verticals</a></li>
+        <li><a href="#capability-view">Viewing Your Capability</a></li>
+        <li><a href="#chatbot">AI Partner Assistant</a></li>
+        <li><a href="#upcoming">Upcoming Features</a></li>
+      </ol>
+    </div>
+
+    <div class="section" id="login">
+      <h2><span class="section-number">1</span> Getting Started &amp; Logging In</h2>
+      <p>Navigate to the IWE platform URL. Enter your partner credentials on the login screen:</p>
+      <ul>
+        <li><strong>Username:</strong> Your assigned partner organization username</li>
+        <li><strong>Password:</strong> Your secure partner password</li>
+      </ul>
+      <p>Click <strong>LOGIN</strong> to access your partner portal. If this is your first login and your organization hasn't completed onboarding, you will be guided through the Partner Wizard to set up your company profile.</p>
+    </div>
+
+    <div class="section" id="home">
+      <h2><span class="section-number">2</span> Partner Home Dashboard</h2>
+      <p>After logging in, you'll land on the <strong>Partner Home</strong> dashboard. This is your central hub showing an overview of your organization's status and submitted capabilities.</p>
+      <div class="screenshot">
+        <img src="screenshots/partner-home.png" alt="Partner Home" />
+        <div class="caption">Figure 1: Partner Home dashboard showing organization overview and capability status</div>
+      </div>
+      <ul>
+        <li><strong>Organization Summary:</strong> Your company profile snapshot and key metrics</li>
+        <li><strong>Capability Status:</strong> Overview of all submitted capabilities and their review status</li>
+        <li><strong>Notifications:</strong> Recent feedback or status changes from administrators</li>
+      </ul>
+      <div class="tip">The IWE sidebar on the left provides navigation to all sections. Your signed-in identity and role are displayed at the bottom of the sidebar.</div>
+    </div>
+
+    <div class="section" id="company">
+      <h2><span class="section-number">3</span> Company Profile</h2>
+      <p>Under the <strong>Company</strong> dropdown in the sidebar, you can access your <strong>Business</strong> and <strong>Finance</strong> information pages.</p>
+      <div class="screenshot">
+        <img src="screenshots/partner-company-info.png" alt="Company Information" />
+        <div class="caption">Figure 2: Company profile and business information form</div>
+      </div>
+      <h3>Business Information</h3>
+      <ul>
+        <li><strong>Company Name &amp; Description:</strong> Your official organization name and overview</li>
+        <li><strong>Contact Information:</strong> Primary POC, email, phone</li>
+        <li><strong>Identifiers:</strong> CAGE code, DUNS number, and SAM registration</li>
+        <li><strong>Address:</strong> Physical and mailing address details</li>
+      </ul>
+      <div class="warning">Ensure all company information is accurate and up-to-date before submitting capabilities. This information is used during the assessment review process.</div>
+    </div>
+
+    <div class="section" id="capabilities">
+      <h2><span class="section-number">4</span> Capabilities Overview</h2>
+      <p>The <strong>Capabilities</strong> page shows all your submitted product/service capabilities. Each capability represents a specific offering you'd like evaluated under the WRA 2026 framework.</p>
+      <div class="screenshot">
+        <img src="screenshots/partner-capabilities.png" alt="Capabilities List" />
+        <div class="caption">Figure 3: Capabilities list showing submitted offerings and their status</div>
+      </div>
+      <ul>
+        <li><strong>Capability Cards:</strong> Each card shows the capability name, type (product/service), and review status</li>
+        <li><strong>Status Indicators:</strong> Track whether your capability is Draft, Submitted, Verified, Not Verified, or Feedback Sent</li>
+        <li><strong>Actions:</strong> View details, edit, or create new capabilities</li>
+      </ul>
+    </div>
+
+    <div class="section" id="wizard">
+      <h2><span class="section-number">5</span> Creating a New Capability</h2>
+      <p>Click <strong>&quot;New Capability&quot;</strong> to launch the 4-step capability wizard. This guided process walks you through providing all necessary information for your assessment.</p>
+
+      <h3>Step 1: Basic Information</h3>
+      <ul>
+        <li><strong>Capability Name:</strong> Official name of your product or service</li>
+        <li><strong>Offering Type:</strong> Product or Service</li>
+        <li><strong>Description:</strong> Detailed overview of what the capability does</li>
+        <li><strong>Problem Statement:</strong> The defense challenge your capability addresses</li>
+        <li><strong>Image:</strong> Product photo or representative image</li>
+      </ul>
+
+      <h3>Step 2: Supporting Materials</h3>
+      <ul>
+        <li><strong>Quad Chart:</strong> Upload your standard quad chart (PDF)</li>
+        <li><strong>Additional Documents:</strong> Any supplementary materials</li>
+      </ul>
+
+      <h3>Step 3: Vertical Assessments</h3>
+      <p>This is the core of your capability submission. For each applicable readiness vertical, you'll:</p>
+      <ol class="step-list">
+        <li>Select your claimed <strong>maturity level</strong> (L1&ndash;L9)</li>
+        <li>Check the required <strong>artifacts</strong> that you can provide evidence for</li>
+        <li><strong>Upload documents</strong> as evidence for the selected artifacts</li>
+        <li>Add optional <strong>compliance remarks</strong> and <strong>additional evidence notes</strong></li>
+      </ol>
+
+      <h3>Step 4: Review &amp; Submit</h3>
+      <ul>
+        <li>Review all entered information across all steps</li>
+        <li>Upload an optional <strong>Whitepaper</strong></li>
+        <li>Click <strong>Submit</strong> to send your capability for admin review</li>
+      </ul>
+
+      <div class="warning">Once submitted, your capability enters the admin review pipeline. You will receive feedback or status updates through the platform.</div>
+    </div>
+
+    <div class="section" id="verticals">
+      <h2><span class="section-number">6</span> Understanding the 9 Readiness Verticals</h2>
+      <p>Each capability is assessed across up to 9 readiness verticals. These measure different dimensions of your offering's maturity and compliance:</p>
+
+      <div class="vertical-grid">
+        <div class="vertical-card">
+          <strong>TRL</strong>
+          <span>Technology Readiness Level</span>
+        </div>
+        <div class="vertical-card">
+          <strong>PRL</strong>
+          <span>Programmatic Readiness Level</span>
+        </div>
+        <div class="vertical-card">
+          <strong>CRL</strong>
+          <span>Cybersecurity Readiness Level</span>
+        </div>
+        <div class="vertical-card">
+          <strong>IRL</strong>
+          <span>Integration Readiness Level</span>
+        </div>
+        <div class="vertical-card">
+          <strong>SCRL</strong>
+          <span>Supply Chain Readiness Level</span>
+        </div>
+        <div class="vertical-card">
+          <strong>TVRL</strong>
+          <span>Test &amp; Verification Readiness Level</span>
+        </div>
+        <div class="vertical-card">
+          <strong>MRL</strong>
+          <span>Manufacturing Readiness Level</span>
+        </div>
+        <div class="vertical-card">
+          <strong>HRL</strong>
+          <span>Human Factors Readiness Level</span>
+        </div>
+        <div class="vertical-card">
+          <strong>AIRL</strong>
+          <span>AI Readiness Level</span>
+        </div>
+      </div>
+
+      <h3>Maturity Levels (L1&ndash;L9)</h3>
+      <p>Each vertical uses a 9-level maturity scale:</p>
+      <ul>
+        <li><strong>L1&ndash;L3:</strong> Early-stage concept and feasibility</li>
+        <li><strong>L4&ndash;L6:</strong> Development and demonstration</li>
+        <li><strong>L7&ndash;L9:</strong> Production-ready and operationally proven</li>
+      </ul>
+
+      <h3>Artifacts &amp; Evidence</h3>
+      <p>Each maturity level has specific <strong>required artifacts</strong> defined by DoD policy frameworks. When you select a maturity level, the system shows which artifacts are required and which you've checked off. Upload supporting documents (PDFs) as evidence.</p>
+
+      <h3>AI Compliance Scoring</h3>
+      <p>Uploaded documents are analyzed by AI against relevant DoD policy frameworks. Each document receives a <strong>compliance score (0&ndash;100)</strong> with detailed rationale explaining what was found and what may be missing.</p>
+
+      <div class="tip">Higher compliance scores indicate better alignment with policy requirements. Scores below 50 typically indicate the document lacks substantive content for the claimed artifact.</div>
+    </div>
+
+    <div class="section" id="capability-view">
+      <h2><span class="section-number">7</span> Viewing Your Capability</h2>
+      <p>Click any capability to open the detailed <strong>Capability View</strong>. This read-only view shows everything you've submitted.</p>
+      <div class="screenshot">
+        <img src="screenshots/partner-capability-view.png" alt="Capability View" />
+        <div class="caption">Figure 4: Detailed capability view showing vertical assessments and compliance scores</div>
+      </div>
+      <ul>
+        <li><strong>Basic Info:</strong> Capability name, type, description, problem statement, and image</li>
+        <li><strong>Vertical Assessments:</strong> Expandable sections for each vertical showing your claimed level, artifacts, and uploaded documents</li>
+        <li><strong>Compliance Scores:</strong> AI-generated document compliance scores with color-coded indicators</li>
+        <li><strong>Admin Feedback:</strong> Any remarks or feedback from administrators will appear here</li>
+        <li><strong>Status:</strong> Current review status (Submitted, Verified, Not Verified, Feedback Sent)</li>
+      </ul>
+    </div>
+
+    <div class="section" id="chatbot">
+      <h2><span class="section-number">8</span> AI Partner Assistant</h2>
+      <p>The <strong>AI Partner Assistant</strong> is available via the floating chat button on every page. It provides context-aware help for your capability submissions.</p>
+      <ul>
+        <li><strong>Capability Guidance:</strong> &quot;How do I fill out a new capability?&quot;</li>
+        <li><strong>Document Requirements:</strong> &quot;What documents do I need for each vertical?&quot;</li>
+        <li><strong>Vertical Explanations:</strong> &quot;Explain the TRL section&quot;</li>
+        <li><strong>Level Descriptions:</strong> &quot;What does each maturity level mean?&quot;</li>
+        <li><strong>Feedback Help:</strong> &quot;Why did I receive feedback on my submission?&quot;</li>
+        <li><strong>Score Improvement:</strong> &quot;How can I improve my readiness scores?&quot;</li>
+      </ul>
+      <div class="tip">Use the preset questions for quick answers, or ask anything about the submission process, verticals, artifacts, or policies.</div>
+    </div>
+
+    <div class="section" id="upcoming">
+      <h2><span class="section-number">9</span> Upcoming Features</h2>
+      <p>The following sections are currently under development and will be available soon:</p>
+      <div class="screenshot">
+        <img src="screenshots/partner-wip.png" alt="Work in Progress" />
+        <div class="caption">Figure 5: Work in Progress page for upcoming features</div>
+      </div>
+      <ul>
+        <li><strong>Finance:</strong> Financial management and reporting</li>
+        <li><strong>Ecosystem:</strong> Partner ecosystem mapping and collaboration</li>
+        <li><strong>Opportunities:</strong> Defense opportunity matching and discovery</li>
+        <li><strong>Resources:</strong> Document library and reference materials</li>
+        <li><strong>Events:</strong> Industry events calendar and registration</li>
+        <li><strong>Inbox:</strong> Messaging and communication center</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>IWE Partner Portal &mdash; Integrated Warfighter Ecosystem &mdash; WRA 2026</p>
+    <p>Partner Portal User Manual</p>
+  </div>
+</body>
+</html>
